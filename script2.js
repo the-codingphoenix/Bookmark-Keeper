@@ -6,7 +6,7 @@ const websiteNameElement = document.getElementById('website-name');
 const websiteUrlElement = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmarks-container');
 
-let bookmarks = [];
+let bookmarks = {};
 
 // Show modal, focus on input
 function showModal() {
@@ -38,54 +38,52 @@ function validate(nameValue, urlValue) {
 
 // Build bookmarks DOM
 function buildBookmarks() {
-    // Clear bookmarks container
+    // Remove all bookmark elements
     bookmarksContainer.textContent = '';
     // Build items
-    bookmarks.forEach((bookmark) => {
-        const { name, url } = bookmark;
-
+    Object.keys(bookmarks).forEach((id) => {
+        const { name, url } = bookmarks[id];
         // Create item
         const item = document.createElement('div');
         item.classList.add('item');
-
         // Close icon
         const closeIcon = document.createElement('i');
         closeIcon.classList.add('fas', 'fa-times');
         closeIcon.setAttribute('title', 'Delete Bookmark');
         closeIcon.setAttribute('onclick', `deleteBookmark('${url}')`);
 
-        // Favicon / Link container
-        const linkInfo = document.createElement('div');
-        linkInfo.classList.add('webinfo');
-
-        // Favicon
-        const favicon = document.createElement('img');
-        favicon.setAttribute('src', `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
-        favicon.setAttribute('alt', 'Favicon');
-
-        //website name
-        const webName = document.createElement('h2');
-        webName,textContent = name;
-        webName.classList.add('website-name');
-        webName.textContent = name;
-        
-        // Link
-        const link = document.createElement('a');
-        link.setAttribute('href', `${url}`);
-        link.setAttribute('target', '_blank');
-        link.textContent = url;
-
-        // Append elements to linkInfo
-        linkInfo.appendChild(favicon);
-        linkInfo.appendChild(webName);
-        linkInfo.appendChild(link);
-
-         // Append linkInfo and closeIcon to item
-         item.appendChild(closeIcon);
-         item.appendChild(linkInfo);
-
-        // Append to bookmarks container
-        bookmarksContainer.appendChild(item);
+         // Favicon / Link container
+         const linkInfo = document.createElement('div');
+         linkInfo.classList.add('webinfo');
+ 
+         // Favicon
+         const favicon = document.createElement('img');
+         favicon.setAttribute('src', `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
+         favicon.setAttribute('alt', 'Favicon');
+ 
+         //website name
+         const webName = document.createElement('h2');
+         webName,textContent = name;
+         webName.classList.add('website-name');
+         webName.textContent = name;
+         
+         // Link
+         const link = document.createElement('a');
+         link.setAttribute('href', `${url}`);
+         link.setAttribute('target', '_blank');
+         link.textContent = url;
+ 
+         // Append elements to linkInfo
+         linkInfo.appendChild(favicon);
+         linkInfo.appendChild(webName);
+         linkInfo.appendChild(link);
+ 
+          // Append linkInfo and closeIcon to item
+          item.appendChild(closeIcon);
+          item.appendChild(linkInfo);
+ 
+         // Append to bookmarks container
+         bookmarksContainer.appendChild(item);
     });
 }
 
@@ -97,20 +95,22 @@ function fetchBookmarks() {
     } 
     else {
         //create bookmarks array in localstorage
-        bookmarks = [
-            {
-                name: 'The Coding Phoenix',
-                url: 'https://thecodingphoenix.com/',
-            },
-        ];
+        const id = `https://thecodingphoenix.com/`
+        bookmarks[id] = {
+            name: 'The Coding Phoenix',
+            url: 'https://thecodingphoenix.com/',
+        }
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
     buildBookmarks();
 }
 
 // delete bookmark
-function deleteBookmark(url) {
-    bookmarks = bookmarks.filter((bookmark) => bookmark.url !== url);
+function deleteBookmark(id) {
+    // Loop through the bookmarks array
+	if (bookmarks[id]) {
+		delete bookmarks[id];
+	}
     //update bookmarks array in localStorage, re-populate DOM
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     fetchBookmarks();
@@ -131,7 +131,7 @@ function storeBookmark(e) {
         name: nameValue,
         url: urlValue,
     };
-    bookmarks.push(bookmark);
+    bookmarks[urlValue] = bookmark;
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     fetchBookmarks();
     bookmarkForm.reset();
