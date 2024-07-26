@@ -62,15 +62,16 @@ h1:hover {
 }
 
 .website-name {
-  font-size: 20px;
-  margin: 0;
+  font-size: 18px;
+  margin: 5px 0;
   color: var(--primary-color);
   text-transform: capitalize;
 }
 
 a {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 a:link, 
@@ -97,6 +98,8 @@ a:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 200px;
+  height: auto;
 }
 
 .webinfo img {
@@ -204,10 +207,12 @@ button:focus {
   outline: none;
 }
 
-
 /* Media query for large smartphone (vertical) */
 @media screen and (max-width: 600px) {
   .container {
     flex-direction: column;
+  }
+  .webinfo {
+    width: 100%;
   }
 }
