@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks Keeper</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="icon" href="https://s2.googleusercontent.com/s2/favicons?domain=www.thecodingphoenix.com"> -->
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/f3726a4d63.js" crossorigin="anonymous"></script>
+    <!-- my css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- open modal -->
+     <h1 id="show-modal">Add Bookmark</h1>
+     <!-- bookmarks -->
+      <div class="container" id="bookmarks-container">
+        
+      </div>
+      <!-- modal -->
+    <div class="modal-container" id="modal">
+        <div class="modal">
+            <i class="fa-solid fa-times close-icon" id="close-modal"></i>
+            <div class="modal-header">
+                <h3>Add Bookmark</h3>
+            </div>
+            <div class="modal-content">
+                <form id="bookmark-form">
+                    <!-- website name -->
+                    <div class="form-group">
+                        <label for="website-name" class="form-label">
+                            Website Name
+                        </label>
+                        <input type="text" class="form-input" id="website-name">
+                    </div>
+                    <!-- website url -->
+                    <div class="form-group">
+                        <label for="website-url" class="form-label">
+                            Website URL
+                        </label>
+                        <input type="text" class="form-input" id="website-url">
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- js -->
+    <script src="script.js"></script>
+</body>
+</html>

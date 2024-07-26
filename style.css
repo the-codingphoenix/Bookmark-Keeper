@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sen:wght@400..800&display=swap');
+
+:root {
+  --white: rgb(255, 255, 255);
+  --bg-color: rgb(21, 21, 21);
+  --primary-color: rgb(169, 25, 58);
+  --secondary-color: rgb(199, 54, 89);
+  --text-color: rgb(238, 238, 238);
+  --light-grey: (201, 206, 211);
+  --border-radius: 5px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23a91d3a' fill-opacity='0.20'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1 {
+  color: var(--text-color);
+  font-family: Sen, sans-serif;
+  padding: 20px;
+  background: rgba(169, 25, 58, 0.6);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 275px;
+  margin: 20px auto 10px;
+  user-select: none;
+}
+
+h1:hover {
+  background: rgba(169, 25, 58, 0.8);
+}
+
+/* Bookmarks */
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--bg-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin: 10px;
+}
+
+.item:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.item:hover a {
+  color: var(--text-color);
+}
+
+.website-name {
+  font-size: 20px;
+  margin: 0;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+a {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+a:link, 
+a:visited {
+  color: var(--bg-color);
+  text-underline-offset: 10px;
+}
+
+a:hover, 
+a:active {
+  text-decoration: underline;
+}
+
+.fa-times {
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+  color: var(--primary-color);
+}
+
+
+.webinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.webinfo img {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px 5px;
+  /* image will line up with text */
+  vertical-align: sub;
+}
+
+/* modal styling */
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+.show-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(169, 25, 58, 0.8);
+  max-width: 95%;
+  width: 500px;
+  animation: modalopen 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.close-icon {
+  color: var(--white);
+  position: relative;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 15px;
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}
+
+.modal-content {
+  padding: 20px;
+  background-color: var(--text-color);
+  filter: brightness(85%);
+}
+
+/* form styling */
+.form-group {
+  height: 55px;
+}
+
+.form-input {
+  width: 96%;
+  padding: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  display: block;
+  outline: none;
+}
+
+.form-label {
+  color: var(--primary-color);
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-color);
+  height: 30px;
+  width: 100%;
+  border: none;
+  border-radius: var(--border-radius);
+  margin: 10px 0 0;
+}
+
+button:hover {
+  filter: brightness(130%)
+}
+
+button:focus {
+  outline: none;
+}
+
+
+/* Media query for large smartphone (vertical) */
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
